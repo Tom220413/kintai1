@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  app:
+    container_name: kintai1app
+    build: ./app
+    volumes:
+     - ./app/source:/django
+    ports:
+     - 8003:8003
+    image: app:django
+    command: python manage.py runserver 0.0.0.0:8003
+    # command: >
+    #   bash -c "hogehoge &&
+    #   python manage.py runserver 0.0.0.0:8003"
+    depends_on:
+      - db
+  db:
+    # image: mysql:5.7
+    image: mysql:8.0
+    container_name: kintai1mysql
+    volumes:
+      - ./database/data:/var/lib/mysql
+    ports:
+      - 3333:3306
+    environment:
+      MYSQL_DATABASE: 'django'
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'true'

@@ -1,0 +1,36 @@
+{% extends "./base.html" %}
+{% block title %}kintai1{% endblock %}
+ 
+{% block content %}
+  <p>自分の勤怠管理</p>
+  <div class="alert alert-primary" role="alert"></div>
+ 
+  <div class="bd-syukkin">
+    <button class="btn btn-primary" type="submit">出勤　現在時刻を取ってきてー</button>
+  </div>
+  <br/>
+  <div class="bd-taikin">
+    <button class="btn btn-primary" type="submit">退勤　現在時刻を取ってきてー</button>
+  </div>
+  <br/>
+  <div class="form-group">
+    <label for="textarea">作業内容:</label>
+    <textarea id="textarea" class="form-control"></textarea>
+    <button class="btn btn-primary" type="submit">作業内容送信</button>
+  </div>
+  <br/>
+  <div class="form-group">
+    <label for="textarea">備考:</label>
+    <textarea id="textarea" class="form-control"></textarea>
+    <button class="btn btn-primary" type="submit">備考内容送信</button>
+  </div>
+{% endblock %}
+ 
+{% block javascripts %}
+  <script>
+    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+    var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+    return new bootstrap.Popover(popoverTriggerEl)
+  })
+  </script>
+{% endblock javascripts %}
